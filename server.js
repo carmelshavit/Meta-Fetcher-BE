@@ -2,14 +2,14 @@
 
 const express = require('express');
 const rateLimitMiddleware = require('./rateLimiter');
+const path = require('path');
 
 const app = express();
 const cors = require('cors');
 const apiRoute = require('./routes/form');
 
-
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.resolve('build')));
+	app.use(express.static(path.resolve('public')));
 } else {
 	app.use(
 		cors({
